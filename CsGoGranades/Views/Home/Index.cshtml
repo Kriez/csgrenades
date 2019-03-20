@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CsGoGranades.Data.Models.Map>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+    @foreach (var map in Model)
+    {
+        <div class="col-sm">
+            <a href="/map/@map.Name">
+                <img src="@Url.Content(@map.ThumbUrl)" alt="@map.Name">
+            </a>
+        </div>
+    }     
+    </div>
+</div>

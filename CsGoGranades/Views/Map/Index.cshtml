@@ -1,0 +1,32 @@
+﻿@model CsGoGranades.Data.Models.Map
+
+@{
+    ViewData["Title"] = @Model.DisplayName;
+}
+
+<div class="container-fluid overlay-holder">
+    <img src="@Url.Content(@Model.OverviewUrl)" class="img-fluid" alt="Responsive image">
+    @foreach (var grenadeSpot in Model.GranadeSpots)
+    {
+        <a href="#myModal" class="video-link" data-toggle="modal" data-target="#myModal" data-src="https://www.youtube.com/embed/@(grenadeSpot.YoutubeUrl)">
+            <img src="@Url.Content("~/images/item/smoke.png")" style="position: absolute; width: 25px; height: 55px; margin-top: -@(Model.SizeY - grenadeSpot.Y + 22)px; margin-left: @(grenadeSpot.X - 12)px;" class="item_smoke" alt="Responsive image">
+        </a>
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- 16:9 aspect ratio -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always">></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
